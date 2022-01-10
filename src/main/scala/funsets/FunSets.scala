@@ -33,7 +33,7 @@ trait FunSets extends FunSetsInterface:
    * Returns the intersection of the two given sets,
    * the set of all elements that are both in `s` and `t`.
    */
-  def intersect(s: FunSet, t: FunSet): FunSet = (x: Int) => s(x) || t(x)
+  def intersect(s: FunSet, t: FunSet): FunSet = (x: Int) => s(x) && t(x)
 
   /**
    * Returns the difference of the two given sets,
@@ -46,7 +46,9 @@ trait FunSets extends FunSetsInterface:
   /**
    * Returns the subset of `s` for which `p` holds.
    */
-  def filter(s: FunSet, p: Int => Boolean): FunSet = ???
+  def filter(s: FunSet, p: Int => Boolean): FunSet = {
+    (x: Int) => s(x) && p(x)
+  }
 
 
   /**
